@@ -1,0 +1,8 @@
+Pages
+
+/
+/Hackathons/:id
+/Login
+/Register
+/Profile
+/Team
