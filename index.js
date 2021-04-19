@@ -34,18 +34,22 @@ app.get('/',(req,res)=>{
 })
 app.get('/hackathons',async (req,res)=>{
     const hackathons = await Hackathon.find({});
-    console.log(hackathons)
     res.render("hackathons",{hackathons})
 })
 app.get('/hackathons/:id',(req,res)=>{
     res.render("hackers")
 })
-app.get('/profile/:id',(req,res)=>{
-    res.render("profile")
+app.get('/profile/:id',async (req,res)=>{
+    const {id} = req.params;
+    const user = await User.findById(id)
+    res.render("profile.ejs",{user})
 })
 app.get('/login',(req,res)=>{
     res.render('login');
 })
 app.get('/register',(req,res)=>{
     res.render("register")
+})
+app.get('*',(req,res)=>{
+    res.render('notfound.ejs')
 })
