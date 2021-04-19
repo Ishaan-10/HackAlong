@@ -1,0 +1,35 @@
+<%layout('layout/boilerplate')%>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <h1 class="mt-2">Hackathons</h1>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div class="row row-cols-3 g-3">
+          
+        <% for(hackathon of hackathons){ %> 
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title"><%=hackathon.name%></h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text"><%=hackathon.description %> </p>
+              <p class="text-success"><%=hackathon.users.length%> Poeple available to Team up</p>
+              <a href="/hackathon/<%=hackathon.id%>" class="btn btn-primary">Find teammates</a>
+            </div>
+            <div class="card-footer text-muted">
+              <%=hackathon.date %> 
+            </div>
+          </div>
+          <% } %> 
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->

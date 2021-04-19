@@ -1,3 +1,4 @@
+//Express
 const express = require('express');
 const app = express();
 
@@ -15,23 +16,36 @@ app.listen('3000',(req,res)=>{
     console.log("Listening on port 3000");
 })
 
+//Staic files
+app.use(express.static('public'));
+
+//EJS and EJS mate
+const ejsMate = require('ejs-mate');
+app.set('view engine','ejs');
+app.engine('ejs',ejsMate)
+
 //Models
-const User = require('./models/users');
-const Hackathon =require('./models/hackathons');
+const User = require('./models/users.js');
+const Hackathon =require('./models/hackathons.js');
 
 //GET REQUESTS
 app.get('/',(req,res)=>{
-    res.send("Home page")
+    res.render('home.ejs')
 })
-app.get('/hackathons',(req,res)=>{
-    res.send("hackathons")
+app.get('/hackathons',async (req,res)=>{
+    const hackathons = await Hackathon.find({});
+    console.log(hackathons)
+    res.render("hackathons",{hackathons})
 })
 app.get('/hackathons/:id',(req,res)=>{
-    res.send("hackers")
+    res.render("hackers")
 })
 app.get('/profile/:id',(req,res)=>{
-    res.send("Profile")
+    res.render("profile")
 })
-app.get('/team',(req,res)=>{
-    res.send("Team formation")
+app.get('/login',(req,res)=>{
+    res.render('login');
+})
+app.get('/register',(req,res)=>{
+    res.render("register")
 })

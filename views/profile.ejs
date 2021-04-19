@@ -1,0 +1,128 @@
+<% layout('layout/boilerplate') %>
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <h1>User Profile</h1>
+      </div>
+    </section><!-- End Breadcrumbs -->
+  
+    <section class="inner-page">
+      <div class="container">
+  
+        <div class="container">
+          <div class="main-body">
+          
+                <div class="row gutters-sm">
+                  <div class="col-md-4 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                          <img src="data:image/jpeg;base64,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" alt="Admin" class="rounded-circle" width="150">
+                          <div class="mt-3">
+                            <h4>John Doe</h4>
+                            <p class="text-muted font-size-sm">New Delhi</p>
+                            <button class="btn btn-outline-primary">Message</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="card mt-3">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                          <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
+                          <span class="text-secondary">https://bootdey.com</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                          <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
+                          <span class="text-secondary">bootdey</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                          <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Linkedin</h6>
+                          <span class="text-secondary">bootdey</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-8">
+  
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            Kenneth Valdez
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            fip@jukmuh.al
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">University</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            Thapar University
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">City</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            New Delhi
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row gutters-sm">
+  
+                      <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                          <div class="card-body">
+                              <h4>Top Skills</h4>
+                              <ul>
+                                <li>Test</li>
+                                <li>Test</li>
+                                <li>Test</li>
+                                <li>Test</li>
+                              </ul>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h4>Achievments</h4>
+                            <ul>
+                              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus officia labore illum tempora eum corrupti aliquam odio impedit animi, iure, itaque quis ducimus. Similique vitae, officia nam maxime quo magni.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+          </div>
+  
+      </div>
+    </section>
+  
+  </main><!-- End #main -->
