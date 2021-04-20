@@ -34,8 +34,15 @@
         <ul>
           <li><a class="nav-link scrollto active" href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/hackathons">Hackathons</a></li>
+          <% if(!currentUser){%>
           <li><a class="nav-link" href="/login">Login</a></li>
           <li><a class="nav-link" href="/register">Register</a></li>
+          <li><a class="nav-link" href="/login">Profile</a></li>
+           <% }else{ %> 
+            <li><a class="nav-link" href="/profile/<%=currentUser._id%>/">Profile</a></li>
+          <li><a class="nav-link" href="/logout">Logout</a></li>
+          <% } %> 
+
           <li><a class="getstarted scrollto" href="/hackathons">Team up -></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

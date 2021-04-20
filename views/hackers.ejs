@@ -10,41 +10,41 @@
 
     <section class="inner-page">
       <div class="container">
+ 
           <div class="text-center mb-3">
-             <h3>Want others to see you ?</h3><button class="btn btn-primary m-lg-1">List yourself</button>
-            </div>
+            <form action="/hackathons/<%=users.id%>/add" method="POST">
+              <h3>Want others to see you ?</h3><button class="btn btn-primary m-lg-1">List yourself</button>
+            </form>
+          </div>
+
         <div class="row">
           <div class="col-8">
-
             <h4>Search</h5>
             <input type="search" name="search" id="search" class="form-control" placeholder="Hackathon">
-            <hr>    
+            <hr>
+
+            <% for(user of users.users){ %> 
             <div class="card" style="margin-bottom: 10px;">
-
-
               <div class="card-header">       
-
-                <h5 class=" d-inline "> Ishaan Bhola</h5>
+                <h5 class=" d-inline "><%=user.name%> </h5>
                 <br>
-                <span>Thapar University</span>
+                <span><%=user.city%> </span>
               </div>
-       
               <div class="card-body">
                 <h5 class="card-title">Skills</h5>
                 <p class="card-text">
                   <ul>
-                    <li>Test</li>
-                    <li>Test</li>
-                    <li>Test</li>
+                    <% for(skill of user.skills){ %> 
+                    <li><%=skill%> </li>
+                    <% } %> 
                   </ul>
                 </p>
-
                 <a href="#" class="btn btn-primary">Chat</a>
                 <a href="#" class="btn btn-success">Team up</a>
               </div>
             </div>
+            <% } %> 
           </div>
-
           <div class="col-4">
             <h4>Filters</h5>
               <hr>

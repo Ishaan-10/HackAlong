@@ -5,7 +5,8 @@ const hackathonSchema = new mongoose.Schema({
     date:String,
     description:String,
     users:[{
-        type:mongoose.Schema.Types.ObjectId
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
     }]
 })
 
