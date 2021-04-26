@@ -20,7 +20,6 @@ const userSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Hackathon'
     }]
-
 })
 userSchema.plugin(passportLocalMongoose);
 const User = new mongoose.model("User",userSchema);

@@ -6,3 +6,9 @@ Pages
 /Register
 /Profile
 /Team
+
+Create Team
+
+/Create team
+/Join team
+/List individually

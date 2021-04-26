@@ -10,30 +10,41 @@
 
     <section class="inner-page">
       <div class="container">
- 
           <div class="text-center mb-3">
-            <form action="/hackathons/<%=users.id%>/add" method="POST">
-              <h3>Want others to see you ?</h3><button class="btn btn-primary m-lg-1">List yourself</button>
+            <h3>Want others to see you ?</h3>
+            <form action="/hackathons/<%=users.id%>/add" method="POST" class="d-inline">
+              <button class="btn btn-primary m-lg-1">List yourself</button>
             </form>
+            <form action="/hackathons/<%=users.id%>/createTeam/" class="d-inline">
+              <button class="btn btn-secondary m-lg-1">Create Team</button>
+            </form>
+            <form action="" class="d-inline">
+              <button class="btn btn-success m-lg-1">Join Team</button>
+            </form>
+            <div class="col-4 offset-md-4 mt-2 mb-2">
+              <%- include('partials/flash.ejs') %>
+            </div>
           </div>
-
         <div class="row">
           <div class="col-8">
             <h4>Search</h5>
-            <input type="search" name="search" id="search" class="form-control" placeholder="Hackathon">
+              <form id="searchform">
+                <input type="search" name="search" id="search" class="form-control" placeholder="Hackathon">
+              </form>
             <hr>
-
+              <h1>Individuals</h1>
             <% for(user of users.users){ %> 
+
             <div class="card" style="margin-bottom: 10px;">
               <div class="card-header">       
-                <h5 class=" d-inline "><%=user.name%> </h5>
+                <h5 class="d-inline name"><%=user.name%> </h5>
                 <br>
                 <span><%=user.city%> </span>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Skills</h5>
                 <p class="card-text">
-                  <ul>
+                   <ul>
                     <% for(skill of user.skills){ %> 
                     <li><%=skill%> </li>
                     <% } %> 
@@ -43,7 +54,21 @@
                 <a href="#" class="btn btn-success">Team up</a>
               </div>
             </div>
+            <% } %>
+
+            <% if(users.teams.length>0){%>               
+            <h1>Teams</h1>
             <% } %> 
+            <% for(team of users.teams){ %>
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><%=team.name%> </h5>
+                  <p class="card-text">Number of members currently <%=team.members.length%>/<%=team.maxMembers%></p>
+                  <p class="card-text">Field : <%=team.field%> </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            <% } %>  
           </div>
           <div class="col-4">
             <h4>Filters</h5>
@@ -62,5 +87,5 @@
         </div>
       </div>
     </section>
-
+    <script src="/js/filter.js"></script>
   </main><!-- End #main -->

@@ -7,6 +7,10 @@ const hackathonSchema = new mongoose.Schema({
     users:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
+    }],
+    teams:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Team'
     }]
 })
 

@@ -1,0 +1,43 @@
+<% layout('layout/boilerplate') %>
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <h1 class="mt-2">Create Team</h1>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <h1>
+          <%=hackathon.name%>
+        </h1>
+        <form action="/hackathons/<%=hackathon.id%>/createTeam/" class="col-6" method="POST">
+          <div>
+            <label for="name">Team Name</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+          </div>
+
+          <div>
+            <label for="number">Team Size</label>
+            <input type="number" name="maxMembers" id="number" class="form-control" max="6" min="2" required>
+          </div>
+          <div>
+            <label class="" for="inlineFormCustomSelect">Tech Field</label>
+            <select class="" id="inlineFormCustomSelect" name="field" required>
+              <option selected>Choose...</option>
+              <option value="Web Development">Web Development</option>
+              <option value="App Development">App Development</option>
+              <option value="Machine Learning">Machine Learning</option>
+              <option value="Blockchain">Blockchain</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <button class="btn btn-primary">Create Team</button>
+        </form>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  </section>

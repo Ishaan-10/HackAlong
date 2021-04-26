@@ -28,7 +28,8 @@ app.engine('ejs',ejsMate)
 //Models
 const User = require('./models/users.js');
 const Hackathon =require('./models/hackathons.js');
-const auth = require('./routes/auth.js');
+const authRoute = require('./routes/auth.js');
+const teamRoute = require('./routes/team.js');
 
 //Session
 const session = require('express-session');
@@ -56,7 +57,8 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-const {isLoggedIn} = require('./middleware')
+const {isLoggedIn} = require('./middleware');
+const Team = require('./models/teams.js');
  
 //Middlewares
 app.use((req,res,next)=> {
@@ -66,7 +68,7 @@ app.use((req,res,next)=> {
     next();
 })
 
-//GET REQUESTS
+//ROUTES
 app.get('/',(req,res)=>{
     res.render('home.ejs')
 })
@@ -76,7 +78,7 @@ app.get('/hackathons',isLoggedIn,async (req,res)=>{
 })
 app.get('/hackathons/:id', isLoggedIn, async (req,res)=>{
     const {id} = req.params;
-    const users = await Hackathon.findById(id).populate('users');
+    const users = await Hackathon.findById(id).populate('users').populate('teams');
     res.render('hackers',{users});
 })
 app.get('/profile/:id', isLoggedIn, async (req,res)=>{
@@ -86,17 +88,24 @@ app.get('/profile/:id', isLoggedIn, async (req,res)=>{
 })
 app.post('/hackathons/:id/add',isLoggedIn, async (req,res)=>{
     const {id} = req.params;
-    const hack = await Hackathon.findById(id);
-    console.log(hack);
+    const hack = await Hackathon.findById(id).populate('users');
     const newUser = await User.findById({_id:req.user.id});
-    console.log(newUser);
+
+    for(user of hack.users){
+        if(user.id === newUser.id){
+            req.flash('error','You are already added');
+            return res.redirect(`/hackathons/${id}`)
+        }
+    }
     hack.users.push(newUser);
     newUser.hackathons.push(hack);
     await hack.save();
     await newUser.save();
-    res.redirect(`hackathon/${id}/`);
+    req.flash('success','Successfully Added');
+    res.redirect(`/hackathons/${id}`);
 })
-app.use('/',auth);
+app.use('/',authRoute);
+app.use('/hackathons/:id/',teamRoute);
 
 app.get('*',(req,res)=>{
     res.render('notfound.ejs')
