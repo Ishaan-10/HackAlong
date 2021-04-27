@@ -16,22 +16,19 @@
               <button class="btn btn-primary m-lg-1">List yourself</button>
             </form>
             <form action="/hackathons/<%=users.id%>/createTeam/" class="d-inline">
-              <button class="btn btn-secondary m-lg-1">Create Team</button>
-            </form>
-            <form action="" class="d-inline">
-              <button class="btn btn-success m-lg-1">Join Team</button>
+              <button class="btn btn-success m-lg-1">Create Team</button>
             </form>
             <div class="col-4 offset-md-4 mt-2 mb-2">
               <%- include('partials/flash.ejs') %>
             </div>
           </div>
         <div class="row">
-          <div class="col-8">
-            <h4>Search</h5>
+          <div class="col-9">
+            <!-- <h4>Search</h5>
               <form id="searchform">
                 <input type="search" name="search" id="search" class="form-control" placeholder="Hackathon">
               </form>
-            <hr>
+            <hr> -->
               <h1>Individuals</h1>
             <% for(user of users.users){ %> 
 
@@ -51,26 +48,33 @@
                   </ul>
                 </p>
                 <a href="#" class="btn btn-primary">Chat</a>
-                <a href="#" class="btn btn-success">Team up</a>
+                <!-- <a href="#" class="btn btn-success">Team up</a> -->
               </div>
             </div>
             <% } %>
 
             <% if(users.teams.length>0){%>               
             <h1>Teams</h1>
-            <% } %> 
-            <% for(team of users.teams){ %>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%=team.name%> </h5>
-                  <p class="card-text">Number of members currently <%=team.members.length%>/<%=team.maxMembers%></p>
-                  <p class="card-text">Field : <%=team.field%> </p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+            <% } %>
+            <div class="row row-cols-3">
+
+              <% for(team of users.teams){ %>
+                <div class="card m-1" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%=team.name%></h5>
+                    <p class="card-text">Number of members currently <%=team.members.length%>/<%=team.maxMembers%></p>
+                    <p class="card-text">Field: <%=team.field%></p>
+                    <form action="/hackathons/<%=users.id%>/join/<%=team.id%>/" method="POST">
+                      <button class="btn btn-success">Join Team</button>
+                    </form>
+                  </div>
                 </div>
-              </div>
-            <% } %>  
+              <% } %>  
+
+            </div>
+
           </div>
-          <div class="col-4">
+          <div class="col-2">
             <h4>Filters</h5>
               <hr>
             <div>

@@ -11,6 +11,30 @@ router.get('/createTeam/',isLoggedIn,async (req,res)=>{
     const hackathon = await Hackathon.findById(id);
     res.render('createTeam.ejs',{hackathon});
 })
+router.post('/join/:teamId/',async (req,res)=>{
+    const {id,teamId} = req.params;
+    console.log(id , teamId);
+    const hackathon = await Hackathon.findById(id);
+    const team = await Team.findById(teamId).populate('members');
+
+    if(team.members.length === team.maxMembers){
+        req.flash('error','The team is full');
+        return res.redirect(`/hackathons/${id}`)
+    }
+
+    for(member of team.members){
+        if(member.id === req.user.id){
+            req.flash('error','You are already added');
+            return res.redirect(`/hackathons/${id}`)
+        }
+    }
+    
+    team.members.push(req.user);
+    await team.save();
+    req.flash('success','You were successfully added to the team');
+    res.redirect(`/hackathons/${hackathon.id}/`);
+
+})
 
 router.post('/createTeam/',isLoggedIn,async (req,res)=>{
 

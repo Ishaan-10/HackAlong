@@ -78,7 +78,10 @@ app.get('/hackathons',isLoggedIn,async (req,res)=>{
 })
 app.get('/hackathons/:id', isLoggedIn, async (req,res)=>{
     const {id} = req.params;
-    const users = await Hackathon.findById(id).populate('users').populate('teams');
+    const users = await Hackathon.findById(id).populate('users').populate({
+        path:'teams',
+        populate:{path:'members'}
+    });
     res.render('hackers',{users});
 })
 app.get('/profile/:id', isLoggedIn, async (req,res)=>{
